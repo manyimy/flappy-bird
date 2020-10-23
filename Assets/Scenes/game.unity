@@ -201,7 +201,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 179922073}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420030}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &179922073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +522,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -526,6 +538,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd7a6fc7ae3cfb4d83e1157e062a5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPage: {fileID: 1984144376}
+  gameOverPage: {fileID: 1242410068}
+  countdownPage: {fileID: 1467350825}
+  scoreText: {fileID: 1154948762}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -669,7 +697,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 782078091}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420030}
+        m_MethodName: ConfirmGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &782078091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,8 +1346,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627713147}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.46, y: 1.3, z: -1077.1871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.51, y: 1.82, z: -1077.1871}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 439384645}
@@ -1365,7 +1404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiltSmooth: 2
   tapForce: 250
-  startPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 1.51, y: 1.82, z: -1077.187}
 --- !u!4 &1671790863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3219292540513244171, guid: bef2e56e0457abf4c89fdecb39b5c192,
@@ -1424,12 +1463,12 @@ PrefabInstance:
     - target: {fileID: 2662784860937019799, guid: af9471f988ba34540ae52e5cb9ffd678,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.77
+      value: 4.58
       objectReference: {fileID: 0}
     - target: {fileID: 2662784860937019799, guid: af9471f988ba34540ae52e5cb9ffd678,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08182907
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2662784860937019799, guid: af9471f988ba34540ae52e5cb9ffd678,
         type: 3}
