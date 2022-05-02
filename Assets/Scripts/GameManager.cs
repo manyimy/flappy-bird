@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
 
     int score = 0;
-    bool gameOver = false;
+    bool gameOver = true;
 
     enum PageState
     {
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     }
 
     public bool GameOver { get { return gameOver; } }
+    public int Score { get { return score; } }
 
     void Awake()
     {
@@ -37,19 +38,40 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         CountdownText.OnCountdownEnd += OnCountdownEnd;
+        TapController.OnPlayerDied += OnPlayerDied;
+        TapController.OnPlayerScored += OnPlayerScored;
     }
 
     void OnDisable()
     {
         CountdownText.OnCountdownEnd -= OnCountdownEnd;
+        TapController.OnPlayerDied -= OnPlayerDied;
+        TapController.OnPlayerScored -= OnPlayerScored;
     }
 
     void OnCountdownEnd()
     {
         SetPageState(PageState.None);
-        OnGameStarted();
+        OnGameStarted(); // event sent to TapController
         score = 0;
         gameOver = false;
+    }
+
+    void OnPlayerDied()
+    {
+        gameOver = true;
+        int savedScore = PlayerPrefs.GetInt("HighScore");
+        if (score > savedScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+        SetPageState(PageState.GameOver);
+    }
+
+    void OnPlayerScored()
+    {
+        score++;
+        scoreText.text = score.ToString();
     }
 
     void SetPageState(PageState state)
@@ -82,14 +104,15 @@ public class GameManager : MonoBehaviour
     public void ConfirmGameOver()
     {
         // activate when replay button is hit
-        OnGameOverConfirmed();
-        scoreText.text = "0";
+        OnGameOverConfirmed(); // event sent to TapController
+        scoreText.text = score.ToString();
         SetPageState(PageState.Start);
     }
 
     public void StartGame()
     {
         // activate when play button is hit
+        scoreText.text = "0";
         SetPageState(PageState.Countdown);
     }
 }
